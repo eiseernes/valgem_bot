@@ -6,7 +6,9 @@ ENV PATH="/root/.local/bin/:$PATH"
 
 RUN useradd -m appuser
 WORKDIR /app
-COPY pyproject.toml uv.lock valgem/ /app
+COPY pyproject.toml uv.lock /app/
+COPY valgem/ /app/valgem/
 RUN uv sync --locked --compile-bytecode
+
 
 CMD ["uv", "run", "valgem"]
