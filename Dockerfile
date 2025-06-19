@@ -8,7 +8,7 @@ RUN useradd -m appuser
 WORKDIR /app
 COPY pyproject.toml uv.lock /app/
 COPY valgem/ /app/valgem/
-RUN uv sync --locked --compile-bytecode
+RUN uv sync --locked
 
 
 CMD ["uv", "run", "valgem"]

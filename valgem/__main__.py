@@ -1,3 +1,4 @@
+import asyncio
 import logging
 import os
 
@@ -44,9 +45,12 @@ async def game_cb(cb: CallbackQuery) -> None:
     else:
         await cb.answer(text="Error")
 
+async def main():
+    await dp.start_polling(bot)
+
 
 if __name__ == "__main__":
     logging.basicConfig(
         level=logging.INFO, format="%(levelname)s:%(name)s: %(message)s"
     )
-    dp.run_polling(bot)
+    asyncio.run(main())
